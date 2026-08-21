@@ -1,3 +1,36 @@
-#k{
-  color:red;
+body{
+  background-color: #ffe6eb;
 }
+img {
+  position: absolute;
+  top: -20px; /* Isse dil upar ki taraf jayega, agar aur upar chahiye toh -30px kar dena */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px; /* Height tumhare hisaab se adjust kar lo */
+  z-index: -1; /* Text ke piche */
+  opacity: 0.3;
+}
+#sp{
+  color: #b86b77;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 2px;
+  margin-top: 20px;
+  font-size:5px;
+}
+#br{
+  font-family: Merriweather;
+  color:#d1225b;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 40px;
+}
+#da{
+  font-family: Merriweather;
+  color:#d1225b;
+  text-align: center;
+  margin-top: -40px;
+  font-size: 40px;
+}
+
