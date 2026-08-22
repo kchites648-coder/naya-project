@@ -3,12 +3,12 @@ body{
 }
 img {
   position: absolute;
-  top: -20px; /* Isse dil upar ki taraf jayega, agar aur upar chahiye toh -30px kar dena */
+  top: -20px; 
   left: 50%;
   transform: translateX(-50%);
-  height: 300px; /* Height tumhare hisaab se adjust kar lo */
-  z-index: -1; /* Text ke piche */
+  height: 300px; 
   opacity: 0.3;
+  pointer-events: none;
 }
 #sp{
   color: #b86b77;
@@ -40,21 +40,23 @@ img {
   font-size: 30px;
   margin-top: -32px;
 }
-#imgg{
-  top: 10px;
-  left: -5px;
-  height: 50px;
-  transform: rotate(-25deg);
-  
+.inpu{
+  display: flex;
+  justify-content:center ;
+  gap: 10px;
 }
-#imggg{
-  
-  top: 500px;
-  left: 10px;
-  height: 50px;
-  transform: rotate(-35deg);
+.passbox{
+  height: 20px;
+  width:20px;
+  text-align: center;
+  outline: 0px;
 }
-  
-
-
+.lockcard{
+  background-color:#fff5f8;
+  border-radius: 20px;
+  padding: 20px;
+  width: 70%;
+margin: 40px auto 0 auto;
+box-shadow: 0 15px 35px rgba(219, 39, 119, 0.25);
+}
 
