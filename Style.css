@@ -46,17 +46,35 @@ img {
   gap: 10px;
 }
 .passbox{
-  height: 20px;
-  width:20px;
-  text-align: center;
-  outline: 0px;
+  width: 50px;
+height: 50px;
+border-radius: 12px;
+padding: 0;
+font-size: 18px;
+border: none;
+  box-shadow: 0 4px 10px rgba(219, 39, 119, 0.15);
+  outline: none;
 }
 .lockcard{
   background-color:#fff5f8;
   border-radius: 20px;
   padding: 20px;
-  width: 70%;
+  width: 60%;
 margin: 40px auto 0 auto;
+  margin-top: 80px;
 box-shadow: 0 15px 35px rgba(219, 39, 119, 0.25);
+  
 }
-
+#enter{
+  margin-top:-2px;
+  font-family: 'Playfair Display', serif;
+  color:#3d2b3d;
+  text-align:center;
+  
+}
+#hinttext{
+  font-family: 'Open Sans', sans-serif;
+color: #8a7086;
+  text-align: center;
+  margin-top:-20px;
+}
