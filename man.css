@@ -1,0 +1,27 @@
+body{
+  background-color:#ffd6e5;
+  
+}
+#man {
+  display: block;
+  width: 290px;
+  max-width: 90%;
+  height: auto;
+  margin: 20px auto;
+  margin-top: -40px;
+}
+#happy{
+  color:#a62b49;
+   font-family: 'Caveat', cursive;
+  text-align: center;
+  margin-top: 80px;
+  font-size: 40px;
+  font-weight: 600;
+}
+#name{
+  font-family: 'Sacramento', cursive;
+  text-align: center;
+  color: #d81b60;
+  font-size: 35px;
+  margin-top: -40px;
+}
