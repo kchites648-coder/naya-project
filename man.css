@@ -19,9 +19,60 @@ body{
   font-weight: 600;
 }
 #name{
-  font-family: 'Sacramento', cursive;
+  font-family: 'Dancing Script', cursive;
   text-align: center;
-  color: #d81b60;
+  color: #ff4d79;
   font-size: 35px;
   margin-top: -40px;
+}
+#he {
+  position: absolute;
+  top: -5px;  
+  left: -10px;     
+  width: 60px; 
+  z-index: -1;
+}
+#hie {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 50px;
+  z-index: -1;
+  transform: rotate(15deg);
+}
+#sub{
+  text-align: center;
+  margin-top: 40px;
+}
+.btn{
+  margin-left: 150px;
+  }
+#yes{
+  gap:5px;
+}
+#b-he {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  width: 60px;
+  pointer-events: none;
+  opacity: 0.2;
+}
+#h {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+  pointer-events: none;
+  opacity: 0.7;
+  filter: saturate(60%) brightness(1.15);
+}
+#rh {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 190px;
+  pointer-events: none;
+  opacity: 0.7;
+  filter: saturate(60%) brightness(1.15);
 }
