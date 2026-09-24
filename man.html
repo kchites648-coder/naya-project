@@ -3,39 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Happy Birthday Sister</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Basic&family=Geist+Pixel:ELSH@88.7&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montenegrin+Gothic+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caveat:wght@600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;1,600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="man.css">
 </head>
 <body>
-  <div class="man">
+
+  <!-- ================= 1. WELCOME SCREEN ================= -->
+  <div id="welcome-screen" class="man">
     <section class="man-text">
       <h2 id="happy">Happy Birthday</h2>
-      <p id="name">Chitesh Kaushik</p>
+      <p id="name">Sister's Name</p> 
     </section>
     <section class="img">
       <img id="man" src="ck.png" alt="msn-img">
-      <p id="sub">
-        Are you excited for what's next?
-      </p>
+      <p id="sub">Are you excited for what's next?</p>
     </section>
-    
-      <button id="yes">Yes</button>
-      <button id="no">No</button>
-    
-    <!--- BACKGROUND HEART --->
+    <div style="text-align: center; position: relative;">
+      <button id="yes" class="btn">Yes</button>
+      <button id="no" class="btn prank-no-btn">No</button>
+    </div>
     <section class="b-img">
-      <img id="h"src="l-h.png">
-      <img id="rh"src="r-h.png">  
+      <img id="h" src="l-h.png">
+      <img id="rh" src="r-h.png">  
     </section>
-    
   </div>
+
+  <!-- ================= 2. BALLOONS SCREEN ================= -->
+  <div id="balloon-screen" class="screen" style="display: none;">
+    <h2 class="aesthetic-title">Pop the Balloons! 🎈</h2>
+    <div class="balloon-container">
+      <div class="balloon-item">
+        <img id="bal-1" src="https://cdn-icons-png.flaticon.com/512/2954/2954884.png"> 
+        <p id="t1" class="hidden-msg" style="display:none;">Best Sister! 💖</p>
+      </div>
+      <div class="balloon-item">
+        <img id="bal-2" src="https://cdn-icons-png.flaticon.com/512/2954/2954884.png"> 
+        <p id="t2" class="hidden-msg" style="display:none;">Always smiling! 😊</p>
+      </div>
+      <div class="balloon-item">
+        <img id="bal-3" src="https://cdn-icons-png.flaticon.com/512/2954/2954884.png"> 
+        <p id="t3" class="hidden-msg" style="display:none;">Partner in crime! 🕵️‍♀️</p>
+      </div>
+      <div class="balloon-item">
+        <img id="bal-4" src="https://cdn-icons-png.flaticon.com/512/2954/2954884.png"> 
+        <p id="t4" class="hidden-msg" style="display:none;">Happy Birthday! ✨</p>
+      </div>
+    </div>
+    <button id="next-to-candle" class="aesthetic-btn" style="display: none; margin-top: 30px;">Go to Cake 🎂</button>
+  </div>
+
+  <!-- ================= 3. CAKE SCREEN ================= -->
+  <div id="cake-screen" class="screen" style="display: none;">
+    <h2 class="aesthetic-title">Blow the candle, Sister!</h2>
+    <div class="cake-container">
+      <img id="cake-img" src="https://cdn-icons-png.flaticon.com/512/3014/3014498.png" alt="Cake">
+      <img id="flame-img" src="https://cdn-icons-png.flaticon.com/512/728/728096.png" alt="Flame">
+    </div>
+    <h3 id="wish-text" class="aesthetic-subtitle" style="display: none;">Close your eyes<br>& make a wish ✨</h3>
+    <button id="blow-btn" class="aesthetic-btn">💨 Tap to blow the candle</button>
+    <button id="make-wish-btn" class="aesthetic-btn" style="display: none;">Open Gifts 🎁</button>
+  </div>
+
+  <!-- ================= 4. VIDEO & PHOTO SCREEN ================= -->
+  <div id="photo-screen" class="screen" style="display: none;">
+    <h2 class="aesthetic-title">Some Sweet Moments</h2>
+    <p class="aesthetic-subtitle" style="font-size: 16px;">(Khud change hoga 3 sec mein)</p>
+    
+    <div class="polaroid-stack-container" style="position: relative; width: 250px; height: 350px;">
+      
+      <!-- Photo 3 (1.jpg) -->
+      <div class="polaroid polaroid-3" id="photo-3" style="position: absolute; z-index: 1;">
+        <img src="1.jpg" alt="Memory">
+        <p>Hamesha Sath 👫</p>
+      </div>
+      
+      <!-- Photo 2 (2.jpg) -->
+      <div class="polaroid polaroid-2" id="photo-2" style="position: absolute; z-index: 2;">
+        <img src="2.jpg" alt="Memory">
+        <p>Bohot tang kiya! 😜</p>
+      </div>
+      
+      <!-- Photo 1 (1.mp4) - Yeh sabse pehle dikhega -->
+      <div class="polaroid polaroid-1" id="photo-1" style="position: absolute; z-index: 3;">
+        <video src="1.mp4" autoplay loop muted playsinline style="width: 100%; height: 250px; object-fit: cover;"></video>
+        <p>Best Memories 🎉</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 5. LETTER SCREEN ================= -->
+  <div id="letter-screen" class="screen" style="display: none;">
+    <h2 class="aesthetic-title">A Message From My Heart</h2>
+    <div id="envelope-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/736/736215.png" alt="Envelope" class="envelope-img">
+    </div>
+    <div id="letter-content" class="letter-paper" style="display: none; text-align: center;">
+      <h2>Dear Sister,</h2>
+      <p>Happy Birthday! Hum dono ka birthday ek hi din hona kisi jadoo se kam nahi hai. Tu meri sabse achi dost aur behen dono hai.</p>
+      <p style="font-weight: bold; color: #d1225b;">Aur haan, ek aur baat... yeh poori website maine khud apne hathon se code ki hai! Ek ek line khud likhi hai tere liye! 😎</p>
+      <p>Hamesha aise hi khush rehna!</p>
+      <p style="text-align: right; color: #a62b49; font-weight: bold;">- Tera Coder Bhai</p>
+      <button id="next-to-feedback" class="aesthetic-btn" style="margin-top: 20px;">Ek Aakhiri Sawal 🤔</button>
+    </div>
+  </div>
+
+  <!-- ================= 6. THE ULTIMATE PRANK SCREEN ================= -->
+  <div id="feedback-screen" class="screen" style="display: none;">
+    
+    <!-- STEP 1: FEEDBACK -->
+    <div id="feedback-step" style="width: 100%;">
+      <h2 class="aesthetic-title">Batao Website Kaisi Lagi? 🤔</h2>
+      <textarea id="feedback-text" placeholder="Kam se kam 10 words likhna..." rows="4" style="width: 80%; max-width: 300px; border-radius: 10px; padding: 15px; border: 2px solid #a62b49; font-family: 'Open Sans', sans-serif; font-size: 16px; outline: none;"></textarea><br>
+      <button id="submit-feedback" class="aesthetic-btn" style="margin-top: 20px;">Submit 💖</button>
+    </div>
+
+    <!-- STEP 2: RETURN GIFT TRAP -->
+    <div id="return-gift-step" style="display: none; width: 100%;">
+      <h2 class="aesthetic-title">Thank You! 🥰</h2>
+      <h3 class="aesthetic-subtitle" style="color: #d1225b; font-size: 24px;">Ab bata, main itna bada coder ban gaya hu... Kya tu mujhe 'Return Gift' degi? 🎁</h3>
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; align-items: center; min-height: 80px; position: relative; height: 100px;">
+        <button id="rg-yes" class="aesthetic-btn">Haan bhai, bilkul! 🤗</button>
+        <button id="rg-no" class="aesthetic-btn prank-no-btn">Nahi dungi 😤</button> 
+      </div>
+    </div>
+
+    <!-- STEP 3: THE REAL PLAN (SETTING) -->
+    <div id="setting-box" style="display: none; width: 100%;">
+      <h2 class="aesthetic-title">Mujhe pata tha tu haan bolegi! 😎</h2>
+      <h3 class="aesthetic-subtitle" style="color: #d1225b; font-size: 26px; line-height: 1.5;">Toh return gift mein... apni uss friend se meri setting karva de! 😂</h3>
+      <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; align-items: center; min-height: 80px; position: relative; height: 100px;">
+        <button id="setting-yes" class="aesthetic-btn">Karva dungi 🤝</button>
+        <button id="setting-no" class="aesthetic-btn prank-no-btn">Bilkul Nahi 😤</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: NAAM BATAO! (NAYA INPUT) -->
+    <div id="name-box" style="display: none; width: 100%;">
+      <h2 class="aesthetic-title">Naam bata! 🤩</h2>
+      <h3 class="aesthetic-subtitle" style="color: #d1225b; font-size: 22px;">Jaldi bata, kis lucky ladki ke sath setting karva rahi hai? 😎</h3>
+      <input type="text" id="girl-name" placeholder="Uss ladki ka naam likh..." style="width: 80%; max-width: 300px; border-radius: 10px; padding: 15px; border: 2px solid #a62b49; font-family: 'Open Sans', sans-serif; font-size: 16px; outline: none;"><br>
+      <button id="submit-name" class="aesthetic-btn" style="margin-top: 20px;">Pakka? Done karu? 💖</button>
+    </div>
+    
+    <!-- STEP 5: FINAL DEAL DONE -->
+    <h3 id="deal-done-msg" class="aesthetic-subtitle" style="display: none; color: #d1225b; font-size: 20px; line-height: 1.5; font-weight: bold;">
+      <!-- Result yahan dikhega -->
+    </h3>
+
+  </div>
+
+  <script src="man.js"></script>
 </body>
 </html>

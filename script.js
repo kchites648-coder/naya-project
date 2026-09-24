@@ -9,7 +9,7 @@ window.onload = function() {
   }
 };
 
-// 2. Encoded Passcode (3009 ka Code)
+// 2. Encoded Passcode
 const SECRET_CODE = "MzAwOQ=="; 
 let enteredCode = "";
 
