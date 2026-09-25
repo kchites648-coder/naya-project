@@ -1,49 +1,40 @@
-// 1. EmailJS Safe Start
-window.onload = function() {
-  try {
-    if (window.emailjs) {
-      emailjs.init("2QYepLZ5c1IFeqUHP");
-    }
-  } catch (error) {
-    console.log("Email engine offline", error);
-  }
-};
+// ==========================================
+// JASOOSI SETUP (script.js) - FIXED
+// ==========================================
 
-// 2. Encoded Passcode
-const SECRET_CODE = "MzAwOQ=="; 
+// Galti yahin thi! Ab purana data delete nahi hoga, balki usme add hoga
+let wrongPasswordsList = JSON.parse(localStorage.getItem("wrongPasswords")) || [];
+let hintClicks = parseInt(localStorage.getItem("hintClicks")) || 0;
+
+const SECRET_CODE = "MzAwOQ=="; // Tera pin 3009
 let enteredCode = "";
 
 const passboxes = document.querySelectorAll(".passbox");
 const keybtns = document.querySelectorAll(".keybtn");
 const openbtn = document.getElementById("openbtn");
 const lockcard = document.querySelector(".lockcard");
+const hintBtn = document.getElementById("hint-btn");
 
-// Pehle ye tha:
-// box.value = enteredCode[i] ? "*" : ""; 
+// --- 1. HINT BUTTON CLICK TRACKING ---
+if (hintBtn) {
+  hintBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    hintClicks++; // Click badhao
+    localStorage.setItem("hintClicks", hintClicks); // Memory me save karo
+    
+    // Save hone ke baad Hint page par bhejo
+    window.location.href = "hint.html"; 
+  });
+}
 
-// Ab uski jagah ye wala function daal:
+// --- 2. PASSWORD DABBE UPDATE (PINK FLOWER) ---
 function updateBoxes() {
   passboxes.forEach((box, i) => {
-    // Agar number type hua hai, toh bada wala 🌸 (flower) ya bada star '✱' dikhao
-    // Maine yahan bada wala flower type star lagaya hai jo mast lagega
     box.value = enteredCode[i] ? "✿" : ""; 
   });
 }
 
-
-// 4. Send Email Function
-function sendEmailLog(status) {
-  try {
-    if (window.emailjs) {
-      emailjs.send("service_5b0d6qf", "template_jq7hc0g", {
-        status: status,
-        time: new Date().toLocaleString()
-      }).catch(err => console.log(err));
-    }
-  } catch (e) {}
-}
-
-// 5. Galat Password par Shake Effect
+// --- 3. GALAT PASSWORD PE SHAKE EFFECT ---
 function shakeCard() {
   lockcard.animate([
     { transform: 'translateX(0)' },
@@ -55,12 +46,11 @@ function shakeCard() {
   ], { duration: 400, iterations: 1 });
 }
 
-// 6. KEYPAD CLICK LOGIC (Ekdum Solid)
+// --- 4. NUMBER TYPE KARNE KA LOGIC ---
 keybtns.forEach(btn => {
   btn.addEventListener("click", (e) => {
     e.preventDefault(); 
     const val = btn.textContent.trim();
-    
     if (val === "⌫") {
       enteredCode = enteredCode.slice(0, -1); 
     } else if (val !== "*" && enteredCode.length < 4) {
@@ -70,34 +60,34 @@ keybtns.forEach(btn => {
   });
 });
 
-// 7. OPEN BUTTON LOGIC
-openbtn.addEventListener("click", (e) => {
-  e.preventDefault(); 
-  
-  if (enteredCode.length < 4) {
-    alert("Please enter the full 4-digit passcode! 🌸");
-    return;
-  }
+// --- 5. OPEN BUTTON (THE MAIN LOGIC) ---
+if(openbtn) {
+  openbtn.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    if (enteredCode.length < 4) {
+      alert("Please enter the full 4-digit passcode! 🌸");
+      return;
+    }
+    const encodedInput = btoa(enteredCode); 
 
-  const encodedInput = btoa(enteredCode); 
-
-  if (encodedInput === SECRET_CODE) { 
-    // CORRECT PIN (3009) ✅
-    sendEmailLog("Correct ✅ (Sister Unlocked It!)");
-    
-    openbtn.innerHTML = "UNLOCKED! 🔓";
-    openbtn.style.backgroundColor = "#d81b60"; 
-    openbtn.style.color = "white";
-    
-    setTimeout(() => {
-      window.location.href = "man.html"; 
-    }, 800);
-
-  } else {
-    // WRONG PIN ❌
-    sendEmailLog("Wrong ❌");
-    shakeCard(); 
-    enteredCode = ""; 
-    updateBoxes(); 
-  }
-});
+    if (encodedInput === SECRET_CODE) { 
+      // CORRECT PIN ✅
+      openbtn.innerHTML = "UNLOCKED! 🔓";
+      openbtn.style.backgroundColor = "#d81b60"; 
+      openbtn.style.color = "white";
+      
+      setTimeout(() => {
+        window.location.href = "man.html"; 
+      }, 800);
+      
+    } else {
+      // WRONG PIN ❌ (Jasoosi Data Record)
+      wrongPasswordsList.push(enteredCode);
+      localStorage.setItem("wrongPasswords", JSON.stringify(wrongPasswordsList));
+      
+      shakeCard(); 
+      enteredCode = ""; 
+      updateBoxes(); 
+    }
+  });
+}
