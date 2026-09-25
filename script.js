@@ -18,12 +18,18 @@ const keybtns = document.querySelectorAll(".keybtn");
 const openbtn = document.getElementById("openbtn");
 const lockcard = document.querySelector(".lockcard");
 
-// 3. Boxes Update
+// Pehle ye tha:
+// box.value = enteredCode[i] ? "*" : ""; 
+
+// Ab uski jagah ye wala function daal:
 function updateBoxes() {
   passboxes.forEach((box, i) => {
-    box.value = enteredCode[i] || ""; 
+    // Agar number type hua hai, toh bada wala 🌸 (flower) ya bada star '✱' dikhao
+    // Maine yahan bada wala flower type star lagaya hai jo mast lagega
+    box.value = enteredCode[i] ? "✿" : ""; 
   });
 }
+
 
 // 4. Send Email Function
 function sendEmailLog(status) {

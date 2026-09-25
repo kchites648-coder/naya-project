@@ -1,4 +1,4 @@
-body{
+body {
   background-color: #ffe6eb;
 }
 img {
@@ -17,17 +17,17 @@ img {
   letter-spacing: 2px;
   text-shadow: 2px;
   margin-top: 20px;
-  font-size:5px;
+  font-size: 5px;
 }
 #br{
-  font-family: Merriweather;
+  font-family: 'Merriweather', serif;
   color:#d1225b;
   text-align: center;
   margin-top: 20px;
   font-size: 40px;
 }
 #da{
-  font-family: Merriweather;
+  font-family: 'Merriweather', serif;
   color:#d1225b;
   text-align: center;
   margin-top: -40px;
@@ -42,19 +42,34 @@ img {
 }
 .inpu{
   display: flex;
-  justify-content:center ;
+  justify-content: center;
   gap: 10px;
 }
-.passbox{
+
+/* ======================================= */
+/* YAHAN THI MAIN GALTI - ISKO THEEK KAR DIYA HAI */
+/* ======================================= */
+.passbox {
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  padding: 0;
-  font-size: 18px;
   border: none;
-  box-shadow: 0 4px 10px rgba(219, 39, 119, 0.15);
-  outline: none;
+  background: white;
+  padding: 0;
+  
+  /* Box ki halki pink shadow */
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5); 
+  
+  /* Text (Star) ka design */
+  color: #ff3366;           
+  font-size: 32px;          
+  text-align: center;       
+  font-weight: bold;        
+  text-shadow: 0px 0px 8px rgba(255, 51, 102, 0.6); 
+  line-height: 50px;        
+  outline: none;            
 }
+
 .lockcard{
   background-color:#fff5f8;
   border-radius: 20px;
@@ -101,16 +116,6 @@ img {
   pointer-events: none;
   height: auto;
   opacity: 1;
-  transform: none;
-  top: auto;
-  left: auto;
-  background-color: transparent;
-}
-.bgheart {
-  position: absolute;
-  pointer-events: none;
-  height: auto;
-  opacity: 1;
   background-color: transparent;
 }
 
@@ -133,9 +138,12 @@ img {
 }
 @keyframes floatHeart2 {
   0%, 100% { transform: rotate(20deg) translateY(0); }
-  50% { transform: rotateb(20deg) translateY(-8px); }
+  50% { transform: rotate(20deg) translateY(-8px); }
 }
 
+/* ======================================= */
+/* YAHAN DUSRI GALTI THI - ISKO BHI THEEK KIYA HAI */
+/* ======================================= */
 .bgheart3 {
   top: 260px;
   left: 5%;
@@ -143,10 +151,7 @@ img {
   animation: floatHeart3 4s ease-in-out infinite;
 }
 @keyframes floatHeart3 {
-  0%,.material-symbols-outlined {
-  vertical-align: middle;
-  font-size: 18px;
-  } 100% { transform: rotate(-10deg) translateY(0); }
+  0%, 100% { transform: rotate(-10deg) translateY(0); }
   50% { transform: rotate(-10deg) translateY(-12px); }
 }
 
@@ -160,7 +165,6 @@ img {
   0%, 100% { transform: rotate(15deg) translateY(0); }
   50% { transform: rotate(15deg) translateY(-10px); }
 }
-
 
 @keyframes floatHeart6 {
   0%, 100% { transform: rotate(-20deg) translateY(0); }
@@ -182,6 +186,7 @@ img {
   0%, 100% { opacity: .3; transform: scale(.8); }
   50%      { opacity: 1;  transform: scale(1.1); }
 }
+
 #openbtn {
   display: block;
   width: 65%;
@@ -198,15 +203,17 @@ img {
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(214, 51, 108, 0.35);
 }
+
 .material-symbols-outlined {
   vertical-align: middle;
   font-size: 18px;
 }
+
 .hint {
   border-radius: 100px;
-  border:none;
+  border: none;
   margin-left: 90px;
-  margin-top:30px;
+  margin-top: 30px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 10px;
@@ -215,5 +222,4 @@ img {
   box-shadow: 0 2px 6px rgba(219, 39, 119, 0.1);
   font-family: 'Open Sans', sans-serif;
   color: #8a7086;
-  
 }
