@@ -22,13 +22,13 @@ const envelopeBox = document.getElementById("envelope-box");
 const letterContent = document.getElementById("letter-content");
 const nextToFeedbackBtn = document.getElementById("next-to-feedback");
 
-// 1. Welcome -> Balloons (Yes dabane par)
+// 1. Welcome -> Balloons
 yesBtn.addEventListener("click", () => {
   welcomeScreen.style.display = "none";
   balloonScreen.style.display = "flex";
 });
 
-// 2. Balloons Phodna
+// 2. Balloons
 let poppedCount = 0;
 for (let i = 1; i <= 4; i++) {
   const balImg = document.getElementById(`bal-${i}`);
@@ -51,34 +51,77 @@ nextToCandleBtn.addEventListener("click", () => {
   cakeScreen.style.display = "flex";
 });
 
-// 4. Candle Bujhana
+// 4. Candle Bujhana (Error-Free Safe Code)
 blowBtn.addEventListener("click", () => {
-  flameImg.style.display = "none"; 
+  // Pehle check karega ki flame hai ya nahi, phir gayab karega (crash nahi hoga)
+  const f1 = document.getElementById("flame-1");
+  const f2 = document.getElementById("flame-2");
+  
+  if (f1) f1.style.display = "none";
+  if (f2) f2.style.display = "none"; 
+  
+  // Ab definitely aage badhega aur text dikhayega
   blowBtn.style.display = "none"; 
-  wishText.style.display = "block"; 
-  makeWishBtn.style.display = "block"; 
+  if (wishText) wishText.style.display = "block"; 
+  if (makeWishBtn) makeWishBtn.style.display = "block"; 
 });
 
-// 5. Cake -> Photos (3 Second wala Jadoo)
+// 5. Cake -> Photos 
 makeWishBtn.addEventListener("click", () => {
   cakeScreen.style.display = "none";
   photoScreen.style.display = "flex";
 
-  // 3 sec me 1st Photo gayab
   setTimeout(() => { if(photo1) photo1.style.display = "none"; }, 3000);
-  // 6 sec me 2nd Photo gayab
   setTimeout(() => { if(photo2) photo2.style.display = "none"; }, 6000);
-  // 9 sec me screen change
   setTimeout(() => {
     photoScreen.style.display = "none";
     letterScreen.style.display = "flex";
   }, 9000);
 });
 
-// 6. Envelope Kholna
+// ==========================================
+// 6. ENVELOPE KHOLNA AUR LETTER TYPING
+// ==========================================
+const typingText = document.getElementById("typing-text");
+const letterLines = [
+  "Dear Sister,\n",
+  "Happy Birthday! Hum dono ka birthday ek hi din hona kisi jadoo se kam nahi hai. Tu meri sabse achi dost aur behen dono hai.\n",
+  "Aur haan, ek aur baat... yeh poori website maine khud apne hathon se code ki hai! Ek ek line khud likhi hai tere liye! 😎\n",
+  "Waise toh tu aajkal itni busy rehti hai ki mujhe message tak nahi karti... Par phir bhi dekh, tere bhai ne tere liye itni mehnat ki hai. Ab thodi baat kar liya kar kanjoos! ❤️\n",
+  "\n\n- Tera Coder Bhai"
+];
+
 envelopeBox.addEventListener("click", () => {
-  envelopeBox.style.display = "none";
-  letterContent.style.display = "block";
+  envelopeBox.classList.add("envelope-open-anim");
+  
+  setTimeout(() => {
+    envelopeBox.style.display = "none"; 
+    letterContent.style.display = "block"; 
+    
+    typingText.textContent = ""; 
+    let currentLineIndex = 0;
+    let currentCharIndex = 0;
+
+    function typeWriter() {
+      if (currentLineIndex < letterLines.length) {
+        let currentLine = letterLines[currentLineIndex];
+        if (currentCharIndex < currentLine.length) {
+          typingText.textContent += currentLine.charAt(currentCharIndex);
+          currentCharIndex++;
+          setTimeout(typeWriter, 40); 
+        } else {
+          currentLineIndex++;
+          currentCharIndex = 0;
+          setTimeout(typeWriter, 300); 
+        }
+      } else {
+        setTimeout(() => {
+          nextToFeedbackBtn.style.display = "block";
+        }, 1000);
+      }
+    }
+    setTimeout(typeWriter, 200); 
+  }, 1000);
 });
 
 // 7. Letter -> Feedback Screen
@@ -88,7 +131,7 @@ nextToFeedbackBtn.addEventListener("click", () => {
 });
 
 // ==========================================
-// THE ULTIMATE PRANK LOGIC (10 WORDS MINIMUM & SHOW DATA)
+// THE ULTIMATE PRANK LOGIC 
 // ==========================================
 const feedbackStep = document.getElementById("feedback-step");
 const submitFeedbackBtn = document.getElementById("submit-feedback");
@@ -106,9 +149,8 @@ const nameBox = document.getElementById("name-box");
 const submitNameBtn = document.getElementById("submit-name");
 const girlNameInput = document.getElementById("girl-name");
 const dealDoneMsg = document.getElementById("deal-done-msg");
-const noBtn = document.getElementById("no"); // Welcome screen ka No button
+const noBtn = document.getElementById("no"); 
 
-// Step 1: Submit dabane par 10 Words ki Validation
 submitFeedbackBtn.addEventListener("click", () => {
   const fbValue = feedbackText.value.trim();
   const wordCount = fbValue === "" ? 0 : fbValue.split(/\s+/).length;
@@ -121,7 +163,6 @@ submitFeedbackBtn.addEventListener("click", () => {
   returnGiftStep.style.display = "block";
 });
 
-// FUNCTON: Button ko bhagane ke liye
 function bhagButton(btn) {
   if(!btn) return;
   const windowWidth = window.innerWidth;
@@ -138,7 +179,6 @@ function bhagButton(btn) {
   btn.style.zIndex = "9999";
 }
 
-// SAARE 'NO' BUTTONS KO BHAGAO
 const prankButtons = [noBtn, rgNo, settingNo];
 prankButtons.forEach(btn => {
   if(btn) {
@@ -148,19 +188,16 @@ prankButtons.forEach(btn => {
   }
 });
 
-// Step 2: Majboori mein "Haan" dabayegi (Return Gift)
 rgYes.addEventListener("click", () => {
   returnGiftStep.style.display = "none";
   settingBox.style.display = "block";
 });
 
-// Step 3: Haar maan kar "Karva dungi" dabayegi
 settingYes.addEventListener("click", () => {
   settingBox.style.display = "none";
   nameBox.style.display = "block"; 
 });
 
-// Step 4: Naam likh kar Final Submit Karna (Aur Result Dikhana)
 submitNameBtn.addEventListener("click", () => {
   const girlName = girlNameInput.value.trim();
   
@@ -171,18 +208,29 @@ submitNameBtn.addEventListener("click", () => {
   
   nameBox.style.display = "none";
   
-  // YAHAN PAR TERA NAYA AAKHIRI DIALOGUE AAYEGA (Bina Feedback Dikhaye)
   dealDoneMsg.innerHTML = `
-    <span style="font-size:35px;">Deal Done! 🤝🎉</span><br><br>
-    Maan gayi tu! Ab meri setting <b style="color: #000; background: #fff; padding: 2px 8px; border-radius: 5px;">${girlName}</b> ke sath confirm! 😎<br><br>
-    <div style="background: rgba(255,255,255,0.4); padding: 15px; border-radius: 10px; margin-top:10px;">
-      <b>Aur haan...</b><br>
-      Kyunki aaj mera bhi Birthday hai, toh tera yeh return gift mujhe mil gaya! 🎁<br><br>
-      Ab jaldi se mujhe bol:<br>
-      <span style="font-size:26px; color:#d1225b; font-weight:bold;">"Happy Birthday Bhai!" 🎂🥳</span>
-    </div><br>
-    Pura proof mere paas hai! Jaldi baat chala ab! 😂
+    <h2 class="aesthetic-title" style="font-size: 42px; margin-bottom: 20px;">Deal Done! 🤝🎉</h2>
+    
+    <p class="aesthetic-subtitle" style="font-size: 22px; margin-bottom: 30px; line-height: 1.5;">
+      Maan gayi tu! Ab meri setting <b style="color: #000; background: #fff; padding: 2px 10px; border-radius: 5px;">${girlName}</b> ke<br>sath confirm! 😎
+    </p>
+
+    <div style="background-color: rgba(255, 255, 255, 0.5); border-radius: 15px; padding: 30px 20px; margin: 0 auto 30px auto; width: 95%; max-width: 400px; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+      <p style="font-size: 22px; color: #a62b49; font-weight: 600; margin-bottom: 10px;">Aur haan...</p>
+      <p style="font-size: 22px; color: #a62b49; line-height: 1.5; margin-bottom: 25px; font-weight: 500;">
+        Kyunki aaj mera bhi Birthday hai,<br>toh tera yeh return gift mujhe mil<br>gaya! 🎁
+      </p>
+      <p style="font-size: 20px; color: #a62b49; margin-bottom: 10px; font-weight: 500;">Ab jaldi se mujhe bol:</p>
+      <h2 style="font-size: 32px; color: #d1225b; font-family: 'Playfair Display', serif; font-weight: bold; margin: 0;">
+        "Happy Birthday Bhai!" 🎂<br>🥳
+      </h2>
+    </div>
+
+    <p class="aesthetic-subtitle" style="font-size: 22px; font-weight: 600; margin-top: 20px; line-height: 1.4;">
+      Pura proof mere paas hai! Jaldi baat<br>chala ab! 😂
+    </p>
   `;
   
   dealDoneMsg.style.display = "block";
+  dealDoneMsg.style.textAlign = "center"; 
 });
